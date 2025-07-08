@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <!-- PUT YOUR PAGE NAME -->
+    <title>janek haha</title>
+    
+    <meta name="artist" content="Martina Menegon" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="my-styles.css" />
+
+    <!-- 💁 OPTIONAL: The :focus-visible polyfill removes the focus ring for some input types -->
+    <script
+      src="https://unpkg.com/focus-visible@5.0.2/dist/focus-visible.js"
+      defer
+    ></script>
+
+    <script>
+      function reloadPage() {
+        location.reload();
+      }
+    </script>
+
+
+  </head>
+
+  <body>
+    <model-viewer
+      id="rndBase"
+      src=""
+      ios-src=""
+      environment-image="./assets/forest.png"
+      exposure="6"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      shadow-intensity="5"
+      shadow-softness="1"
+      ar-scale="auto"
+     
+      
+      autoplay
+    >
+        <!-- *optional: REPLACE THE URL WITH YOUR GRAPHIC FOR THE AR BUTTON -->
+      <button
+        slot="ar-button"
+        id="ar-button"
+        style="
+          background-image: url(./assets/arbadge.png);
+        "
+      ></button>
+         
+      
+    </model-viewer>
+
+ <!-- HERE IS WHERE THE MAGIC HAPPENS!
+src = link to your glb asset, each link = 1 glb
+ios-src = link to your usdz asset, each link = 1 usdz
+the rest leaveit as it is!-->
+    
+    <script type="module">
+      const modelViewer = document.querySelector("model-viewer");
+      const base = [
+        "./assets/phonetest2.glb",
+        "./assets/phonetest2.glb",
+      ];
+      
+      const baseios = [
+        "./assets/phonetest1.usdz",
+        "./assets/phonetest1.usdz",
+      ];
+      
+      var randomBaseIndex = Math.floor(Math.random() * base.length);
+      var randomBase = base[randomBaseIndex];
+      var randomBaseios = baseios[randomBaseIndex]
+      console.log(randomBase, randomBaseios);
+      modelViewer.src = randomBase;
+      modelViewer.setAttribute('ios-src', randomBaseios);
+      
+    </script>
+    
+       <!-- DO NOT DELETE! -->
+    <footer>
+      <p>janek huhn (chicken little) </p>
+
+      <p style="font-size: 7px">
+        <a href="https://martinamenegon.xyz/">Martina Menegon</a>
+        * Digital Design and Virtuality (2025) *
+        <a href="https://transmedialekunst.com/en/">Transmedia Art</a>
+        *
+        <a href="https://www.dieangewandte.at/">Die Angewandte</a>
+      </p>
+      <br />
+    </footer>
+    
+       <!-- DO NOT DELETE! -->
+
+    <!-- 💁 Include both scripts below to support all browsers! -->
+
+    <!-- Loads <model-viewer> for modern browsers: -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </body>
+</html>
